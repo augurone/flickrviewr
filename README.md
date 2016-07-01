@@ -25,7 +25,7 @@ Create a web page that shows a grid of photo thumbnails; when a thumbnail is cli
 
 ## In the Wild
 ### On the web:
-[flickrviewr in the wild](http://fridaze.com)
+**[flickrviewr in the wild](http://fridaze.com)**
 
 ### [CodePen](http://codepen.io/) Resources
 **[Editor View](http://codepen.io/augur/pen/4f8ef43cb704be022875888f5c1e0447)**
