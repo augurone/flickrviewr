@@ -32,7 +32,7 @@ Create a web page that shows a grid of photo thumbnails; when a thumbnail is cli
 
 **[Full Screen View](http://codepen.io/augur/full/4f8ef43cb704be022875888f5c1e0447)**
 
-**[Download Gist](https://gist.github.com/augurone/363a6e2d2f7a8c3cf98146f1db0073c6/archive/fe3bcbf1dff9857f12bcd14d173125273ebf8ed7.zip)**
+**[Download ZIP](https://github.com/augurone/flickrviewr/archive/master.zip)**
 
 #### Dependencies also on Codepen
 **[String Substitute Templating](http://codepen.io/augur/pen/LZWZpE)**

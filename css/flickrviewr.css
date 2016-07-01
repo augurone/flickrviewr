@@ -82,8 +82,8 @@ header input[type="text"] {
 	height: 3ex;
 	padding: 1ex 1em;
 	position: relative;
-	min-width: 12em;
-	max-width: 12em;
+	min-width: 10em;
+	max-width: 20em;
 }
 
 header input[type="text"] ~ button {
