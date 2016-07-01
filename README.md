@@ -13,9 +13,15 @@ Create a web page that shows a grid of photo thumbnails; when a thumbnail is cli
 
 - Decided to use the tokenized Flickr API
 - K.I.S.S. plain HTML, CSS, JS delivery
-- Use Codepen as dev environment
+- Use Codepen as dev environment versus setting up and entire build environment for this purpose. 
   - Used LESS, and autoprefixer
   - No external JS dependencies I did not write.
+- Challenged myself to use as few classes as possible
+- All Semantic tags
+
+## How to use?
+- From a local repository open it in the browser. 
+- Can be deployed as is to existing webdirectory. 
 
 ## [CodePen](http://codepen.io/) Resources
 **[Editor View](http://codepen.io/augur/pen/4f8ef43cb704be022875888f5c1e0447)**
