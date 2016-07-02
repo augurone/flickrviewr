@@ -169,11 +169,11 @@ window.flickrImageViewer = (function (controller) {
 		controller.loadmore = document.querySelector('button[name="loadmore"]'),
 			//Search Button
 			controller.search = document.querySelector('button[name="search"]'),
-			jax('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6267e4a56d468eef717dd6b196e67791&tags=eastbay&text=graffiti&per_page=' + Pagination.pagesize + '&format=json&nojsoncallback=1', builder);
+			jax('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6267e4a56d468eef717dd6b196e67791&tags=eastbay&text=graffiti&per_page='+Pagination.pagesize+'&format=json&nojsoncallback=1', builder);
 		controller.loadmore.addEventListener('click', function (event) {
 			var value = !controller.theme ? 'graffiti' : controller.theme;
 			if (Pagination.page < Pagination.totalpages) {
-				jax('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6267e4a56d468eef717dd6b196e67791&tags=eastbay&text=' + value + '&per_page=' + Pagination.pagesize + '&format=json&nojsoncallback=1&page=' + Pagination.page, builder);
+				jax('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6267e4a56d468eef717dd6b196e67791&tags=eastbay&text=' + value + '&per_page='+Pagination.pagesize+'&format=json&nojsoncallback=1&page=' + Pagination.page, builder);
 			} else {
 				controller.loadmore.classList.add('hide');
 			}
@@ -184,8 +184,8 @@ window.flickrImageViewer = (function (controller) {
 			event.preventDefault();
 			parent = getParents(targ, 'FORM', event);
 			input = parent.querySelector('input[name="searchinput"]'),
-				value = input.value;
-			jax('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6267e4a56d468eef717dd6b196e67791&tags=eastbay&text=' + value + '&per_page=' + Pagination.pagesize + '&format=json&nojsoncallback=1', builder);
+				value = input.value ? input.value : 'graffiti';
+			jax('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6267e4a56d468eef717dd6b196e67791&tags=eastbay&text=' + value + '&per_page='+Pagination.pagesize+'&format=json&nojsoncallback=1', builder);
 			controller.loadmore.classList.remove('hide');
 			controller.theme = value;
 			Pagination.page = 1;
