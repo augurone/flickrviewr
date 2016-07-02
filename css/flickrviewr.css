@@ -103,7 +103,7 @@ figure {
 	-webkit-align-content: center;
 	-ms-flex-line-pack: center;
 	align-content: center;
-	background-color: inherit;
+	background-color: rgba(0,0,0,.31);
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
