@@ -3,13 +3,11 @@
 	margin: 0;
 	padding: 0;
 }
-
 input[type="radio"],
 input[type="checkbox"] {
 	position: absolute;
 	visibility: hidden;
 }
-
 body,
 main {
 	-webkit-align-content: center;
@@ -23,11 +21,9 @@ main {
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 }
-
 main {
 	width: 100%;
 }
-
 button {
 	-webkit-align-self: center;
 	-ms-flex-item-align: center;
@@ -40,11 +36,9 @@ button {
 	text-align: center;
 	text-decoration: none;
 }
-
 button:hover {
 	background-color: #5FDB64;
 }
-
 header {
 	background-color: rgba(0, 0, 0, 0.85);
 	left: 0;
@@ -57,7 +51,6 @@ header {
 	width: calc(100%);
 	z-index: 2;
 }
-
 header form {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
@@ -73,7 +66,6 @@ header form {
 	justify-content: center;
 	width: 100%;
 }
-
 header input[type="text"] {
 	-webkit-align-self: baseline;
 	-ms-flex-item-align: baseline;
@@ -85,12 +77,10 @@ header input[type="text"] {
 	min-width: 10em;
 	max-width: 20em;
 }
-
 header input[type="text"] ~ button {
 	margin-top: 0;
 	padding: .6125ex 1em .875ex;
 }
-
 main {
 	padding: 12ex 1em 2ex 1em;
 	-webkit-box-pack: stretch;
@@ -98,12 +88,11 @@ main {
 	-ms-flex-pack: stretch;
 	justify-content: stretch;
 }
-
 figure {
 	-webkit-align-content: center;
 	-ms-flex-line-pack: center;
 	align-content: center;
-	background-color: rgba(0,0,0,.31);
+	background-color: rgba(0, 0, 0, 0.31);
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -127,7 +116,6 @@ figure {
 	padding: 4ex 2em;
 	position: relative;
 }
-
 figure:before {
 	background-position: 50% 50%;
 	background-size: cover;
@@ -139,7 +127,6 @@ figure:before {
 	right: 0;
 	top: 0;
 }
-
 figure > label {
 	color: #ffffff;
 	cursor: pointer;
@@ -149,23 +136,19 @@ figure > label {
 	position: absolute;
 	z-index: 5;
 }
-
 figure > label:not([for="close"]) {
 	background: #000000;
 	min-width: 1.5em;
 	top: calc(49%);
 }
-
 figure > label:not([for="close"]):nth-of-type(1) {
 	left: 0;
 	-webkit-transform: rotate(180deg);
 	transform: rotate(180deg);
 }
-
 figure > label:not([for="close"]):nth-of-type(2) {
 	right: 0;
 }
-
 figure > img {
 	background-color: inherit;
 	background-position: 50% 50%;
@@ -188,7 +171,6 @@ figure > img {
 	right: 0;
 	top: 0;
 }
-
 figure label[for="close"] {
 	background: #000;
 	padding: 3ex 1.25em 2ex .625em;
@@ -196,7 +178,6 @@ figure label[for="close"] {
 	right: 0;
 	top: 0;
 }
-
 nav {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
@@ -213,14 +194,14 @@ nav {
 	width: 100%;
 	padding-bottom: 4ex;
 }
-
 nav button {
 	padding: 2ex 2em;
 }
-
 .noscroll,
 .noscroll main {
 	height: 100vh;
 	overflow: hidden;
 }
-
+.hide {
+	visibility: hidden;
+}
