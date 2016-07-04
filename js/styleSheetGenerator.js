@@ -25,6 +25,13 @@ function StyleSheets() {
 		} while (l);
 		return undefined;
 	};
+	this.destroyStylesheet = function() {
+		var head = document.querySelector('head'),
+			style = head.querySelector('style[title="'+this.options.name+'"]');
+		if(this.options.existing && style) {
+			head.removeChild(style);
+		}
+	};
 	this.createStylesheet = function() {
 		var style = document.createElement('style');
 		style.title = this.options.name;
