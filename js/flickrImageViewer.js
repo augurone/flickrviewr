@@ -3,6 +3,7 @@ window.flickrImageViewer = (function (controller) {
 	//Pagination Object
 	var Pagination = {
 			page: 1,
+			pagesize : 10,
 			cssIndex: 0
 		},
 	//Keep data we already asked for
@@ -134,12 +135,13 @@ window.flickrImageViewer = (function (controller) {
 		Pagination.page += 1;
 		Pagination.totalpages = data.photos.pages;
 		for (i = 0; Boolean(card = cardstore[i]); i++) {
-			cssidx = i === 0 ? 0 : Pagination.cssIndex,
 			dom1.push(strsubstitute(Templates.input(), data, i, len));
 			dom2.push(strsubstitute(Templates.figure(), card, i, len));
-			groupcardselector.push(strsubstitute(Templates.csschecked(), card, i+Pagination.cssIndex, len));
-			grouplabelselector.push(strsubstitute(Templates.csslabelchecked(), card, i+Pagination.cssIndex, len));
-			groupimageselector.push(strsubstitute(Templates.imgselector(), card, i+Pagination.cssIndex, len));
+		}
+		for ( i = 0; Boolean(card = cards[i]); i++) {
+			groupcardselector.push(strsubstitute(Templates.csschecked(), card, i + Pagination.cssIndex , len + Pagination.cssIndex));
+			grouplabelselector.push(strsubstitute(Templates.csslabelchecked(), card, i + Pagination.cssIndex, len + Pagination.cssIndex));
+			groupimageselector.push(strsubstitute(Templates.imgselector(), card, i + Pagination.cssIndex, len + Pagination.cssIndex));
 		}
 		controller.stylesheet.addCSSRule({
 			sheet: sheet,
@@ -162,13 +164,12 @@ window.flickrImageViewer = (function (controller) {
 		dom1.push(Templates.nocardinput());
 		target.innerHTML = dom1.concat(dom2).join('');
 		setDomEvents(target);
-		Pagination.cssIndex = Pagination.cssIndex === 0 ? 1 + len : Pagination.cssIndex + len;
+		Pagination.cssIndex = Pagination.cssIndex + Pagination.pagesize;
 	}
 
 	controller.init = function () {
 		controller.stylesheet = new StyleSheets();
 		controller.sheet = controller.stylesheet.createStylesheet();
-		Pagination.pagesize = 10;
 		//Load More button
 		controller.loadmore = document.querySelector('button[name="loadmore"]');
 		//Search Button
