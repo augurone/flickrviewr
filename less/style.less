@@ -74,7 +74,7 @@ main {
 
 figure {
 	align-content: center;
-	background-color: rgba(0,0,0,.31);
+	background-color: rgba(0, 0, 0, .31);
 	display: flex;
 	flex: 1 1 13em;
 	flex-direction: column;
@@ -136,12 +136,20 @@ figure {
 		right: 0;
 		top: 0;
 	}
+
 	label[for="close"] {
 		background: #000;
 		padding: 3ex 1.25em 2ex .625em;
 		position: absolute;
 		right: 0;
 		top: 0;
+	}
+}
+
+@supports (-ms-accelerator:true){
+	figure > img {
+		object-fit: fit;
+		object-position: 100% 100%;
 	}
 }
 
@@ -162,4 +170,8 @@ nav {
 		height: 100vh;
 		overflow: hidden;
 	}
+}
+
+.hide {
+	visibility: hidden;
 }

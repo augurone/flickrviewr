@@ -158,7 +158,7 @@ window.flickrImageViewer = (function (controller) {
 			controller.stylesheet.addCSSRule({
 				sheet: sheet,
 				selector: groupimageselector.join(','),
-				rules: '{ background-image: none !important; background-color: transparent; content: normal; cursor: default; max-height: calc(100% - 16ex); max-width: 100%; object-fit: fit; object-position: 50% 50%; padding-left: 0; position: relative;}',
+				rules: '{align-self: center; background-image: none !important; background-color: transparent; content: normal; cursor: default; max-height: calc(100% - 16ex); max-width: 100%; object-fit: fit; object-position: 50% 50%; padding-left: 0; position: relative;}',
 				index: controller.stylesheet.getIndex()
 			});
 			dom1.push(Templates.nocardinput());

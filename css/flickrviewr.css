@@ -178,6 +178,14 @@ figure label[for="close"] {
 	right: 0;
 	top: 0;
 }
+@supports (-ms-accelerator: true) {
+	figure > img {
+		-o-object-fit: fit;
+		object-fit: fit;
+		-o-object-position: 100% 100%;
+		object-position: 100% 100%;
+	}
+}
 nav {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
@@ -205,3 +213,4 @@ nav button {
 .hide {
 	visibility: hidden;
 }
+
