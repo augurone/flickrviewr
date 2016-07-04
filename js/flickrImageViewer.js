@@ -2,7 +2,8 @@ window.flickrImageViewer = (function (controller) {
 	'use strict';
 	//Pagination Object
 	var Pagination = {
-			page: 1
+			page: 1,
+			cssIndex: 0
 		},
 	//Keep data we already asked for
 		cardstore = [],
@@ -124,17 +125,21 @@ window.flickrImageViewer = (function (controller) {
 			groupcardselector = [],
 			grouplabelselector = [],
 			groupimageselector = [],
+			cssidx,
 			len,
 			card,
 			i;
 		cardstore = cardstore.concat(cards);
 		len = cardstore.length ? cardstore.length - 1 : cards.length - 1;
+		Pagination.page += 1;
+		Pagination.totalpages = data.photos.pages;
 		for (i = 0; Boolean(card = cardstore[i]); i++) {
+			cssidx = i === 0 ? 0 : Pagination.cssIndex,
 			dom1.push(strsubstitute(Templates.input(), data, i, len));
 			dom2.push(strsubstitute(Templates.figure(), card, i, len));
-			groupcardselector.push(strsubstitute(Templates.csschecked(), card, i, len));
-			grouplabelselector.push(strsubstitute(Templates.csslabelchecked(), card, i, len));
-			groupimageselector.push(strsubstitute(Templates.imgselector(), card, i, len));
+			groupcardselector.push(strsubstitute(Templates.csschecked(), card, i+Pagination.cssIndex, len));
+			grouplabelselector.push(strsubstitute(Templates.csslabelchecked(), card, i+Pagination.cssIndex, len));
+			groupimageselector.push(strsubstitute(Templates.imgselector(), card, i+Pagination.cssIndex, len));
 		}
 		controller.stylesheet.addCSSRule({
 			sheet: sheet,
@@ -151,14 +156,13 @@ window.flickrImageViewer = (function (controller) {
 		controller.stylesheet.addCSSRule({
 			sheet: sheet,
 			selector: groupimageselector.join(','),
-			rules: '{ background-image: none !important; background-color: transparent; content: normal; cursor: default; height: auto; max-height: calc(100% - 16ex); max-width: 100%; object-fit: fit; object-position: 50% 50%; padding-left: 0; position: relative; width: 100%;}',
+			rules: '{ background-image: none !important; background-color: transparent; content: normal; cursor: default; height: auto; max-height: calc(100% - 16ex); max-width: 100%; object-fit: fit; object-position: 50% 50%; padding-left: 0; position: relative;}',
 			index: controller.stylesheet.getIndex()
 		});
 		dom1.push(Templates.nocardinput());
 		target.innerHTML = dom1.concat(dom2).join('');
 		setDomEvents(target);
-		Pagination.page += 1;
-		Pagination.totalpages = data.photos.pages;
+		Pagination.cssIndex = Pagination.cssIndex === 0 ? 1 + len : Pagination.cssIndex + len;
 	}
 
 	controller.init = function () {
@@ -166,14 +170,14 @@ window.flickrImageViewer = (function (controller) {
 		controller.sheet = controller.stylesheet.createStylesheet();
 		Pagination.pagesize = 10;
 		//Load More button
-		controller.loadmore = document.querySelector('button[name="loadmore"]'),
-			//Search Button
-			controller.search = document.querySelector('button[name="search"]'),
-			jax('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6267e4a56d468eef717dd6b196e67791&tags=eastbay&text=graffiti&per_page='+Pagination.pagesize+'&format=json&nojsoncallback=1', builder);
+		controller.loadmore = document.querySelector('button[name="loadmore"]');
+		//Search Button
+		controller.search = document.querySelector('button[name="search"]');
+		jax('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6267e4a56d468eef717dd6b196e67791&tags=eastbay&text=graffiti&per_page=' + Pagination.pagesize + '&format=json&nojsoncallback=1', builder);
 		controller.loadmore.addEventListener('click', function (event) {
 			var value = !controller.theme ? 'graffiti' : controller.theme;
 			if (Pagination.page < Pagination.totalpages) {
-				jax('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6267e4a56d468eef717dd6b196e67791&tags=eastbay&text=' + value + '&per_page='+Pagination.pagesize+'&format=json&nojsoncallback=1&page=' + Pagination.page, builder);
+				jax('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6267e4a56d468eef717dd6b196e67791&tags=eastbay&text=' + value + '&per_page=' + Pagination.pagesize + '&format=json&nojsoncallback=1&page=' + Pagination.page, builder);
 			} else {
 				controller.loadmore.classList.add('hide');
 			}
@@ -185,7 +189,7 @@ window.flickrImageViewer = (function (controller) {
 			parent = getParents(targ, 'FORM', event);
 			input = parent.querySelector('input[name="searchinput"]'),
 				value = input.value ? input.value : 'graffiti';
-			jax('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6267e4a56d468eef717dd6b196e67791&tags=eastbay&text=' + value + '&per_page='+Pagination.pagesize+'&format=json&nojsoncallback=1', builder);
+			jax('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=6267e4a56d468eef717dd6b196e67791&tags=eastbay&text=' + value + '&per_page=' + Pagination.pagesize + '&format=json&nojsoncallback=1', builder);
 			controller.loadmore.classList.remove('hide');
 			controller.theme = value;
 			Pagination.page = 1;
